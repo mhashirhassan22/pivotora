@@ -1,0 +1,1 @@
+web: gunicorn pivotora.wsgi --log-file -

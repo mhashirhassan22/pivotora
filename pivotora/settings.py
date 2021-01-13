@@ -75,8 +75,6 @@ TEMPLATES = [
         },
     },
 ]
-
-
 WSGI_APPLICATION = 'pivotora.wsgi.application'
 
 

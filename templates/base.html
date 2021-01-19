@@ -71,6 +71,7 @@
                 </li>
               </ul>
               <footer class="text-center text-white small">
+                <p class="mb--0 mb-2"><a href="mailto:AISHA@PIVOTORA.COM" style="color:white">aisha@pivotora.com</a></p>
                 <p class="mb--0 mb-2">Copyright 2020 Pivotora</p>
               </footer>
             </div>
@@ -266,7 +267,7 @@
 
                   <div class="tm-contact-form-wrap">
 
-                    <form action="{% url 'contact:message-create' %}" method="POST" class="tm-contact-form">
+                    <form action="{% url 'contact:message-create' %}#cal" method="POST" class="tm-contact-form">
                       {% csrf_token %}
                         <div class="form-group">
                           <input type="text" id="name" name="name" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Your Name" required="" />
@@ -282,7 +283,7 @@
                         <div class="form-group mb-0">
                           {% if done %}
                           <div class="alert alert-success">
-                            <strong>Success!</strong> This alert box could indicate a successful or positive action.
+                            <strong>Success!</strong> Your message has been received.
                           </div>
                           {% endif %}
 
@@ -315,7 +316,7 @@
               </section>
           </div>
 
-          <div class="tm-section-wrap bg-white">
+          <!-- <div class="tm-section-wrap bg-white">
             <section id="about" class="row tm-section">
               <div class="col-xl-4"> 
                   <img src="{% static 'img/contact.jpg' %}" alt="Client Image" class="img-fluid tm-client-img" />
@@ -331,7 +332,7 @@
                 </div>
 
             </section>
-          </div>
+          </div> -->
             
 
 

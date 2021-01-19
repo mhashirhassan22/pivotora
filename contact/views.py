@@ -97,7 +97,7 @@ class MessageView(View):
         context['next_month'] = next_month(d)
         context['done'] = 'success'
         msg.save()
-        return render(request, self.template_name, {'done': 'success'})
+        return render(request, self.template_name, context)
 
 
 

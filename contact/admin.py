@@ -13,5 +13,5 @@ class MessageAdmin(admin.ModelAdmin):
 
 
 
-admin.site.register(Event)
+# admin.site.register(Event)
 admin.site.register(Message, MessageAdmin)

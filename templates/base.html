@@ -266,20 +266,27 @@
 
                   <div class="tm-contact-form-wrap">
 
-                    <form action="" method="POST" class="tm-contact-form">
+                    <form action="{% url 'contact:message-create' %}" method="POST" class="tm-contact-form">
+                      {% csrf_token %}
                         <div class="form-group">
-                          <input type="text" id="contact_name" name="contact_name" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Your Name" required="" />
+                          <input type="text" id="name" name="name" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Your Name" required="" />
                         </div>
                         <div class="form-group">
-                          <input type="email" id="contact_email" name="contact_email" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Your Email" required="" />
+                          <input type="email" id="email" name="email" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Your Email" required="" />
                         </div>
                 
                         <div class="form-group">
-                          <textarea rows="4" id="contact_message" name="contact_message" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Message..." required=""></textarea>
+                          <textarea rows="4" id="message" name="message" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Message..." required=""></textarea>
                         </div>
                 
                         <div class="form-group mb-0">
-                          <button type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
+                          {% if done %}
+                          <div class="alert alert-success">
+                            <strong>Success!</strong> This alert box could indicate a successful or positive action.
+                          </div>
+                          {% endif %}
+
+                          <button id="msgbtn" type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
                             SEND US MESSAGE
                           </button>
                         </div>
@@ -307,7 +314,6 @@
                 </div>
               </section>
           </div>
-
 
           <div class="tm-section-wrap bg-white">
             <section id="about" class="row tm-section">

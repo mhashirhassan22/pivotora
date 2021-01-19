@@ -8,7 +8,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.utils.safestring import mark_safe
 import calendar
-
+import datetime as dt
 from .models import *
 from .utils import Calendar
 from contact.forms import EventForm
@@ -72,3 +72,34 @@ def event(request, event_id=None):
         form.save()
         return HttpResponseRedirect(reverse('contact:calendar'))
     return render(request, 'index.html', {'form': form})
+
+
+
+class MessageView(View):
+    template_name = "index.html"
+
+
+    def get(self, request):
+        context = {
+        }
+        return redirect('/')
+
+    def post(self, request):
+        msg = Message()
+        msg.name = request.POST['name']
+        msg.email = request.POST['email']
+        msg.message = request.POST['message']
+        date = dt.dt.strptime(date, "%m/%d/%Y")
+        cal = Calendar(dt.date.today().year, dt.date.today().month)
+        html_cal = cal.formatmonth(withyear=True)
+        context['calendar'] = mark_safe(html_cal)
+        context['prev_month'] = prev_month(d)
+        context['next_month'] = next_month(d)
+        context['done'] = 'success'
+        msg.save()
+        return render(request, self.template_name, {'done': 'success'})
+
+
+
+
+

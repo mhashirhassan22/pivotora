@@ -11,3 +11,11 @@ class Event(models.Model):
     def get_html_url(self):
         url = reverse('cal:event_edit', args=(self.id,))
         return f'<a href="{url}"> {self.title} </a>'
+
+
+class Message(models.Model):
+    name = models.CharField(max_length=60)
+    email = models.CharField(max_length=60)
+    message = models.TextField()
+    resolved = models.BooleanField(default=False)
+    sent_at = models.DateTimeField(auto_now_add=True)

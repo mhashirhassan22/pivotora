@@ -84,6 +84,7 @@ class MessageView(View):
         return redirect('/')
 
     def post(self, request):
+        context= {}
         msg = Message()
         msg.name = request.POST['name']
         msg.email = request.POST['email']

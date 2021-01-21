@@ -7,6 +7,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.utils.safestring import mark_safe
+from django.utils.dateparse import parse_datetime
 import calendar
 from .models import *
 from .utils import Calendar
@@ -100,6 +101,41 @@ class MessageView(View):
         return render(request, self.template_name, context)
 
 
+class EventView(View):
+    template_name = "index.html"
 
+
+    def get(self, request, d):
+        context= {}
+        context['date'] = d
+        return render(request, self.template_name, context)
+
+    def post(self, request, d):
+        context= {}
+        curr_date = get_date(self.request.GET.get('month', None))
+        cal = Calendar(curr_date.year, curr_date.month)
+        html_cal = cal.formatmonth(withyear=True)
+        context['calendar'] = mark_safe(html_cal)
+        context['prev_month'] = prev_month(curr_date)
+        context['next_month'] = next_month(curr_date)
+
+        e = Event()
+        e.email = request.POST['email']
+        e.start_time = request.POST['start_time']
+        e.end_time = request.POST['end_time']
+        x = d.split('-')
+        e.date = datetime(int(x[2]), int(x[1]), int(x[0]))
+
+
+        # check if event collides
+
+        all_events = Event.objects.filter(date=e.date, start_time__lte=e.end_time, end_time__gte=e.start_time)
+        if(all_events):
+            context['fail'] = 'fail'
+        else:
+            context['booked'] = 'success'
+            e.save()
+
+        return render(request, self.template_name, context)
 
 

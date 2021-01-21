@@ -4,6 +4,65 @@
 {% block conten%}
 
 {% include 'cal.html' %}
+{% if date %}
+
+
+<div class="col-xl-6 mb-5">
+    <h2 class="tm-color-primary tm-section-title mb-4">Request Appointment</h2>
+
+    <div class="tm-contact-form-wrap">
+
+      <form action="{% url 'contact:event-check' date %}#cal" method="POST" class="tm-contact-form">
+        {% csrf_token %}
+
+  
+        <div class="form-group">
+            <small style="color: red;">Date: {{date}} <a href="{% url 'contact:index' %}#cal" type="button" class="btn btn-danger btn-xs">< Calendar</a></small>
+        </div>
+        <div class="form-group">
+            <input type="email" id="email" name="email" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Your Email" required="" />
+          </div>
+          <div class="form-group">
+            <small>Start time:</small><br>
+            <input type="time" id="start_time" name="start_time" required>
+        </div>
+        <div class="form-group">
+            <small>End time:</small><br>
+            <input type="time" id="end_time" name="end_time" required>
+        </div>
+  
+          <div class="form-group mb-0">
+            {% if fail %}
+            <div class="alert alert-danger">
+              <strong>Not Booked!</strong> This slot is reserved. Please choose another time!
+            </div>
+            {% endif %}
+            {% if success %}
+            <div class="alert alert-success">
+              <strong>Success!</strong> Your request has been received. Our team will contact you for confirmation!
+            </div>
+            {% endif %}
+
+            <button  id="eve" type="submit" class="btn rounded-0 d-block ml-auto tm-btn-primary">
+              Book Appointment
+            </button>
+          </div>
+        </form>
+    </div>                    
+  </div>
+
+{% endif %}
+{% if fail %}
+<div class="alert alert-danger">
+  <strong>Not Booked!</strong> This slot is reserved. Please choose another time!
+</div>
+{% endif %}
+{% if booked %}
+<div class="alert alert-success">
+  <strong>Success!</strong> Your request has been received. Our team will contact you for confirmation!
+</div>
+{% endif %}
 {% endblock %}
+
 
 </html>

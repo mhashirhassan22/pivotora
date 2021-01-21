@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from calendar import HTMLCalendar
 from .models import Event
+from django.urls import reverse
 from django.utils.html import format_html
 import datetime
 
@@ -13,18 +14,17 @@ class Calendar(HTMLCalendar):
 	# formats a day as a td
 	# filter events by day
 	def formatday(self, day, events):
-		events_per_day = events.filter(start_time__day=day)
+		events_per_day = events.filter(date__day=day)
 		d = ''
 		for event in events_per_day:
 			d += f'<li> {event.get_html_url} </li>'
 
 		if day != 0:
-			url = "{% url 'contact:event' "+str(day)+'m'+str(self.month)+'y'+str(self.year)+" %}"
-			return f"<td><a class='datenum' href="+ '"' + url + '"' + "><span class='date'>" + str(day) +"</span></a></td>"
-
-			# return f"<td><span class='date'><a href="+ '"' + url + '"' + ">" + str(day) +"</a>"
-			# return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
-		return '<td></td>'
+			date = str(day)+'-'+str(self.month)+'-'+str(self.year)
+			print(date)
+			url = reverse('contact:event-check', args=(date,))
+			return f'<td><a  class="datenum" href="{url}#eve"> {day} </a></td>'
+		return '<td> - </td>'
 
 	# formats a week as a tr
 	def formatweek(self, theweek, events):
@@ -36,7 +36,7 @@ class Calendar(HTMLCalendar):
 	# formats a month as a table
 	# filter events by year and month
 	def formatmonth(self, withyear=True):
-		events = Event.objects.filter(start_time__year=self.year, start_time__month=self.month)
+		events = Event.objects.filter(date__year=self.year, date__month=self.month)
 		monthinteger = self.month
 
 		month = datetime.date(self.year, monthinteger, 1).strftime('%B')

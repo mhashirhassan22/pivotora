@@ -2,15 +2,17 @@ from django.db import models
 from django.urls import reverse
 
 class Event(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField()
+    email = models.CharField(max_length=100)
+    date = models.DateField()
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+    approved = models.BooleanField(default=False)
+
 
     @property
     def get_html_url(self):
-        url = reverse('cal:event_edit', args=(self.id,))
-        return f'<a href="{url}"> {self.title} </a>'
+        url = reverse('contact:event_edit', args=(self.id,))
+        return f'<a href="{url}"> {self.email} </a>'
 
 
 class Message(models.Model):

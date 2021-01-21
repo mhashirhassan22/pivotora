@@ -15,4 +15,5 @@ urlpatterns = [
 
         
         path('message/', views.MessageView.as_view() , name="message-create"),
+        path('event/<str:d>', views.EventView.as_view() , name="event-check"),
 ]

@@ -12,7 +12,7 @@ class Event(models.Model):
     @property
     def get_html_url(self):
         url = reverse('contact:event_edit', args=(self.id,))
-        return f'<a href="{url}"> {self.email} </a>'
+        return f'<a href="{url}"> abc </a>'
 
 
 class Message(models.Model):

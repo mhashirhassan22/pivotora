@@ -21,7 +21,6 @@ class Calendar(HTMLCalendar):
 
 		if day != 0:
 			date = str(day)+'-'+str(self.month)+'-'+str(self.year)
-			print(date)
 			url = reverse('contact:event-check', args=(date,))
 			return f'<td><a  class="datenum" href="{url}#eve"> {day} </a></td>'
 		return '<td> - </td>'
@@ -50,5 +49,4 @@ class Calendar(HTMLCalendar):
 		cal += f'{self.formatweekheader()}\n'
 		for week in self.monthdays2calendar(self.year, self.month):
 			cal += f'{self.formatweek(week, events)}\n'
-		# print(cal)
 		return cal

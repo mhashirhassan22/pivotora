@@ -6,8 +6,8 @@
 
   <body>
     <main class="container-fluid">
-      <div class="row">        
-          <nav id="tmSidebar" class="tm-bg-black-transparent tm-sidebar">
+      <div class="row" style="background-color:white">        
+          <nav id="tmSidebar" class="tm-bg-black-transparent tm-sidebar" style="background-image: url('{% static "img/bg.jpg"%}')";>
             <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
               <i class="fas fa-bars"></i>
             </button>
@@ -15,8 +15,9 @@
               <div class="tm-brand-box">
                 <div class="tm-double-border-1">
                   <div class="tm-double-border-2">
+                    <a href="{% url 'contact:index' %}">
                     <img src="{% static 'img/logot.png' %}" alt="Client Image" class="img-fluid tm-client-img" />
-
+                  </a>
                     <!-- <h1 class="tm-brand text-uppercase">Tech Hub</h1> -->
                   </div>
                 </div>
@@ -78,53 +79,32 @@
           </nav>
           
           <main role="main" class="ml-sm-auto col-12">
-            <div
-              class="parallax-window"
-              data-parallax="scroll"
-              data-image-src="{% static 'img/dream-pulse-header.jpg' %}">
-              <div class="tm-section-wrap">
-                <section id="intro" class="tm-section">
-                    <div class="tm-bg-white-transparent tm-intro">
-                        <h2 class="tm-section-title mb-5 text-uppercase" style="color: #830432;">Introducing Pivotora</h2>
-                        <p class="tm-color-gray">
 
-                          Pivotora helps brands and businesses solve their
-                          challenges with creative web & mobile solutions.  
-                        </p>
-                        <p class="mb-0 tm-color-gray">
-                          Our packages are tailor made to satisfy the needs of
-                          emerging startups, existing ones & mid-large
-                          corporations         
-                        </p>
-                    </div>              
-                </section>
-            </div>            
-          </div>
 
           <div class="tm-section-wrap bg-white">
             <section id="about" class="row tm-section">
+
+              <div class="col-xl-12 tm-flex-item-center" style="text-align: center;">
+                <h1 style="color: #830432;font-family: Georgia, 'Times New Roman', Times, serif;">Pivotora</h1><hr>
+
+        
+                 </div> 
               <div class="col-xl-6">
                 <div class="tm-section-half">    
                     <div><i class="fas fa-6x fa-building mb-5 tm-section-icon" style="color: #830432;"></i></div>                        
                     <h2 class="tm-section-title tm-color-primary mb-5" >About Us</h2>
                     <p class="mb-5">
-                      Pivotora partners with startups and businesses by
-                      providing a one stop shop with a variety of tech
-                      solutions to solve their challenges. It’s a spin off
-                      project from Godoba Platform which is one of it’s kind
-                      in the middle east. 
+                      Pivotora partners with businesses, startups and institutions by providing a one stop shop with a variety of tech solutions to solve their challenges with creative web and mobile solution.
+
                     </p>
                 </div>
               </div>
               <div class="col-xl-6">
                 <div class="tm-section-half">
                     <div><i class="far fa-6x fas fa-glasses mb-5 tm-section-icon" style="color: #830432;"></i></div>
-                    <h2 class="tm-section-title tm-color-primary mb-5">Our Vision</h2>
+                    <h2 class="tm-section-title tm-color-primary mb-5">Our Mission</h2>
                     <p class="mb-5">
-                      We aspire to create a healthy eco system in for startups and
-                      businesses in Oman by providing high quality digital solutions
-                      at an affordable price in a timely manner and lead the
-                      innovative movement when it comes to digital services
+                      To provide a tech and smart solutions for businesses and td institutions and solve their challenges by providing high quality digital services
                     </p>
                 </div>
               </div>
@@ -139,14 +119,14 @@
                 <div class="w-100 tm-double-border-1 tm-border-gray">
                     <div class="tm-double-border-2 tm-border-gray tm-box-pad">
                       <div class="tm-gallery-wrap">
-                          <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Our Porfolio</h2>
+                          <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Our Portfolio</h2>
                           <div class="tm-gallery">
                             <div class="tm-gallery-item">                        
                               <figure class="effect-bubba">
                                 <img src="{% static 'img/portfolio1.jpg' %}" alt="Our Work Image" class="img-fluid">
                                 <figcaption>
                                   <!-- <h2>Fresh <span>Bubba</span></h2> -->
-                                  <p>Darrbak is a Platt-Form for tourism adventure</p>
+                                  <p>Darrbak is a Platform for tourism adventure</p>
                                   <a href="{% static 'img/portfolio1.jpg' %}">View more</a>
                                 </figcaption>
                               </figure>

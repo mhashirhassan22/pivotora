@@ -180,15 +180,16 @@ a {
 }
 
 .nav-link.current .tm-white-rect,
-.nav-link:hover .tm-white-rect {
+.nav-link:hover {
   opacity: 1;
 }
 
 .tm-main-nav .nav-link:hover {
-  animation-name: blinker;
-  animation-duration: 0.5s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
+  /* animation-name: blinker;
+  animation-duration: 3s;
+  animation-timing-function:;
+  animation-iteration-count: infinite; */
+  color:red;
 }
 
 @keyframes blinker {

@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from calendar import HTMLCalendar
 from .models import Event
 from django.urls import reverse
@@ -20,6 +20,9 @@ class Calendar(HTMLCalendar):
 			d += f'<li> {event.get_html_url} </li>'
 
 		if day != 0:
+			temp_date = datetime.date(int(self.year),int(self.month),int(day))
+			if(temp_date< datetime.date.today()):
+				return f'<td><p style="color:lightgray;"> {day} </p></td>'
 			date = str(day)+'-'+str(self.month)+'-'+str(self.year)
 			url = reverse('contact:event-check', args=(date,))
 			return f'<td><a  class="datenum" href="{url}#eve"> {day} </a></td>'

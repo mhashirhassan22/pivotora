@@ -41,7 +41,6 @@ class Calendar(HTMLCalendar):
 		month = datetime.date(self.year, monthinteger, 1).strftime('%B')
 		b1 = f'<tr><th colspan="7" class="month"><a class="btn btn-danger left" id="left" href="#"> < </a>\n'+'<strong style="padding:20px">'+month+' '+str(self.year)+'</strong> '+'<a class="btn btn-danger right sun" id="right" href="#"> > </a></th></tr>'
 		test = f'{self.formatmonthname(self.year, self.month, withyear=withyear)}\n'
-		print(test)
 		cal = f'<table id="cal" style="display:grid">\n'
 		cal += b1
 

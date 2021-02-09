@@ -106,7 +106,19 @@ class EventView(View):
 
 
     def get(self, request, d):
+        selected_date = d.split('-')
+        curr_date = datetime.now().date()
         context= {}
+        dt = date(int(selected_date[2]),int(selected_date[1]),int(selected_date[0]))
+        if(curr_date>dt):
+            d = get_date(self.request.GET.get('month', None))
+            cal = Calendar(d.year, d.month)
+            html_cal = cal.formatmonth(withyear=True)
+            context['calendar'] = mark_safe(html_cal)
+            context['prev_month'] = prev_month(d)
+            context['next_month'] = next_month(d)
+            context['wrong_date'] = 'Please select future day for appointment!'
+            return render(request, self.template_name, context)
         context['date'] = d
         return render(request, self.template_name, context)
 

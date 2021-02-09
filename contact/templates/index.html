@@ -62,6 +62,11 @@
   <strong>Success!</strong> Your request has been received. Our team will contact you for confirmation!
 </div>
 {% endif %}
+{% if wrong_date %}
+<div id="eve" class="alert alert-success">
+  <strong>Date Incorrect!</strong> Please select future day for appointment.
+</div>
+{% endif %}
 {% endblock %}
 
 

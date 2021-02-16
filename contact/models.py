@@ -21,3 +21,24 @@ class Message(models.Model):
     message = models.TextField()
     resolved = models.BooleanField(default=False)
     sent_at = models.DateTimeField(auto_now_add=True)
+
+class WebContent(models.Model):
+    about_us = models.TextField()
+    mission =  models.TextField()
+    email1 = models.TextField()
+    email2 = models.TextField()
+    speciality_image = models.ImageField(upload_to='',null=True,default='img/abc.jpg', blank=True) 
+
+    @property
+    def image_url(self):
+        if self.speciality_image and hasattr(self.speciality_image, 'url'):
+            return self.speciality_image 
+
+class Portfolio(models.Model):
+    title_image = models.ImageField(null=True,default='img/abc.jpg', blank=True)    
+    short_description = models.TextField()
+
+    @property
+    def image_url(self):
+        if self.title_image and hasattr(self.title_image, 'url'):
+            return self.title_image

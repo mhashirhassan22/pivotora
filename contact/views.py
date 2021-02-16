@@ -19,7 +19,12 @@ class PivotoraIndex(View):
     template_name = "index.html"
 
     def get(self, request):
+        web_content = WebContent.objects.filter().first()
+        portfolio = Portfolio.objects.all()
         context = {
+            'content': web_content,
+            'portfolio': portfolio
+
         }
         return render(request, self.template_name, context)
 
@@ -33,6 +38,13 @@ class CalendarView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        web_content = WebContent.objects.filter().first()
+        portfolio = Portfolio.objects.all()
+        context = {
+            'content': web_content,
+            'portfolio': portfolio
+
+        }
         d = get_date(self.request.GET.get('month', None))
         cal = Calendar(d.year, d.month)
         html_cal = cal.formatmonth(withyear=True)
@@ -71,7 +83,15 @@ def event(request, event_id=None):
     if request.POST and form.is_valid():
         form.save()
         return HttpResponseRedirect(reverse('contact:calendar'))
-    return render(request, 'index.html', {'form': form})
+    web_content = WebContent.objects.filter().first()
+    portfolio = Portfolio.objects.all()
+    context = {
+        'content': web_content,
+        'portfolio': portfolio,
+        'form': form
+
+    }
+    return render(request, 'index.html', context)
 
 
 
@@ -80,12 +100,25 @@ class MessageView(View):
 
 
     def get(self, request):
+        web_content = WebContent.objects.filter().first()
+        portfolio = Portfolio.objects.all()
         context = {
+            'content': web_content,
+            'portfolio': portfolio,
+            'form': form
+
         }
         return redirect('/')
 
     def post(self, request):
-        context= {}
+        web_content = WebContent.objects.filter().first()
+        portfolio = Portfolio.objects.all()
+        context = {
+            'content': web_content,
+            'portfolio': portfolio,
+            'form': form
+
+        }
         msg = Message()
         msg.name = request.POST['name']
         msg.email = request.POST['email']
@@ -108,7 +141,14 @@ class EventView(View):
     def get(self, request, d):
         selected_date = d.split('-')
         curr_date = datetime.now().date()
-        context= {}
+        web_content = WebContent.objects.filter().first()
+        portfolio = Portfolio.objects.all()
+        context = {
+            'content': web_content,
+            'portfolio': portfolio,
+            'form': form
+
+        }
         dt = date(int(selected_date[2]),int(selected_date[1]),int(selected_date[0]))
         if(curr_date>dt):
             d = get_date(self.request.GET.get('month', None))
@@ -123,7 +163,14 @@ class EventView(View):
         return render(request, self.template_name, context)
 
     def post(self, request, d):
-        context= {}
+        web_content = WebContent.objects.filter().first()
+        portfolio = Portfolio.objects.all()
+        context = {
+            'content': web_content,
+            'portfolio': portfolio,
+            'form': form
+
+        }
         curr_date = get_date(self.request.GET.get('month', None))
         cal = Calendar(curr_date.year, curr_date.month)
         html_cal = cal.formatmonth(withyear=True)
@@ -151,3 +198,8 @@ class EventView(View):
         return render(request, self.template_name, context)
 
 
+
+
+
+def index(request):
+    return redirect('admin:index')

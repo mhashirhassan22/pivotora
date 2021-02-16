@@ -16,6 +16,21 @@ class EventAdmin(admin.ModelAdmin):
 
 
 
+class WebContentAdmin(admin.ModelAdmin):
+    list_display = ('id' ,'about_us', 'mission', 'email1','email2', 'speciality_image')
+    list_editable = ('about_us', 'mission', 'email1','email2', 'speciality_image',)
+    list_display_links = ('id',)
+
+class PortfolioAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title_image', 'short_description')
+    list_editable = ('title_image', 'short_description',)
+    list_display_links = ('id',)
+
+
+
 
 admin.site.register(Event,EventAdmin)
 admin.site.register(Message, MessageAdmin)
+
+admin.site.register(WebContent, WebContentAdmin)
+admin.site.register(Portfolio, PortfolioAdmin)

@@ -72,7 +72,7 @@
                 </li>
               </ul>
               <footer class="text-center text-white small">
-                <p class="mb--0 mb-2"><a href="mailto:AISHA@PIVOTORA.COM" style="color:white">aisha@pivotora.com</a>|<a href="mailto:info@PIVOTORA.COM" style="color:white">info@pivotora.com</a></p>
+                <p class="mb--0 mb-2"><a href="mailto:AISHA@PIVOTORA.COM" style="color:white">{{content.email1}}</a>|<a href="mailto:info@PIVOTORA.COM" style="color:white">{{content.email2}}</a></p>
                 <p class="mb--0 mb-2">Copyright 2020 Pivotora</p>
               </footer>
             </div>
@@ -94,8 +94,7 @@
                     <div><i class="fas fa-6x fa-building mb-5 tm-section-icon" style="color: #830432;"></i></div>                        
                     <h2 class="tm-section-title tm-color-primary mb-5" >About Us</h2>
                     <p class="mb-5">
-                      Pivotora partners with businesses, startups and institutions by providing a one stop shop with a variety of tech solutions to solve their challenges with creative web and mobile solution.
-
+{{content.about_us}}
                     </p>
                 </div>
               </div>
@@ -104,7 +103,7 @@
                     <div><i class="far fa-6x fas fa-glasses mb-5 tm-section-icon" style="color: #830432;"></i></div>
                     <h2 class="tm-section-title tm-color-primary mb-5">Our Mission</h2>
                     <p class="mb-5">
-                      To provide a tech and smart solutions for businesses and td institutions and solve their challenges by providing high quality digital services
+{{content.mission}}
                     </p>
                 </div>
               </div>
@@ -121,37 +120,19 @@
                       <div class="tm-gallery-wrap">
                           <h2 class="tm-color-primary tm-section-title mb-4 ml-2">Our Portfolio</h2>
                           <div class="tm-gallery">
+                            {% for p in portfolio %}
                             <div class="tm-gallery-item">                        
                               <figure class="effect-bubba">
-                                <img src="{% static 'img/portfolio1.jpg' %}" alt="Our Work Image" class="img-fluid">
+                                <img src="media/{{p.title_image}}" alt="Our Work Image" class="img-fluid">
                                 <figcaption>
                                   <!-- <h2>Fresh <span>Bubba</span></h2> -->
-                                  <p>Darrbak is a Platform for tourism adventure</p>
-                                  <a href="{% static 'img/portfolio1.jpg' %}">View more</a>
-                                </figcaption>
-                              </figure>
-                            </div>
-                            <div class="tm-gallery-item">
-                              <figure class="effect-bubba">
-                                <img src="{% static 'img/portfolio3.jpg' %}" alt="Our Work Image" class="img-fluid">
-                                <figcaption>
-                                  <!-- <h2>Fresh <span>Bubba</span></h2> -->
-                                  <p>The Platform Providing Activities, Tours, Hotels, Travel and Leisure Packages.</p>
-                                  <a href="{% static 'img/portfolio3.jpg' %}">View more</a>
-                                </figcaption>
-                              </figure>
-                            </div>
-                            <div class="tm-gallery-item">
-                              <figure class="effect-bubba">
-                                <img src="{% static 'img/portfolio.jpg' %}" alt="Our Work Image" class="img-fluid">
-                                <figcaption>
-                                  <!-- <h2>Fresh <span>Bubba</span></h2> -->
-                                  <p>Solving the most intractable problems in agriculture industry</p>
-                                  <a href="{% static 'img/portfolio.jpg' %}">View more</a>
+                                  <p>{{p.short_description}}</p>
+                                  <a href="media/{{p.title_image}}">View more</a>
                                 </figcaption>
                               </figure>
                             </div>
 
+                            {% endfor %}
                           </div>
                       </div>                        
                     </div>                  
@@ -174,7 +155,7 @@
                           </p> -->
 
                       </div>
-                      <img src="{% static 'img/expertise.jpg' %}" alt="Client Image" class="img-fluid tm-client-img" />
+                      <img src=media/{{content.speciality_image}} alt="Client Image" class="img-fluid tm-client-img" />
 
                       <!-- <div class="row tm-clients-images">
                         <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">

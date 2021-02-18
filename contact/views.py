@@ -105,7 +105,6 @@ class MessageView(View):
         context = {
             'content': web_content,
             'portfolio': portfolio,
-            'form': form
 
         }
         return redirect('/')
@@ -116,7 +115,6 @@ class MessageView(View):
         context = {
             'content': web_content,
             'portfolio': portfolio,
-            'form': form
 
         }
         msg = Message()
@@ -146,7 +144,6 @@ class EventView(View):
         context = {
             'content': web_content,
             'portfolio': portfolio,
-            'form': form
 
         }
         dt = date(int(selected_date[2]),int(selected_date[1]),int(selected_date[0]))
@@ -168,7 +165,6 @@ class EventView(View):
         context = {
             'content': web_content,
             'portfolio': portfolio,
-            'form': form
 
         }
         curr_date = get_date(self.request.GET.get('month', None))

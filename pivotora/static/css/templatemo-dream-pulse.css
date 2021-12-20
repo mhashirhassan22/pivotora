@@ -59,6 +59,8 @@ a {
 
 .tm-section-title {
   font-size: 1.6rem;
+  font-weight: bolder;
+  color: var(--main-gray) !important;
 }
 
 .parallax-window {
@@ -85,7 +87,7 @@ a {
 
 .tm-brand-box {
   box-sizing: content-box;
-  width: 100%;
+  width: 45%;
   max-width: 230px;
   min-height: 160px;
   color: white;
@@ -105,7 +107,7 @@ a {
 }
 
 .tm-border-gray {
-  border-color: #cdcecf;
+  border-color: var(--main-color);
 }
 
 .tm-box-pad {
@@ -189,7 +191,7 @@ a {
   animation-duration: 3s;
   animation-timing-function:;
   animation-iteration-count: infinite; */
-  color:red;
+  color:var(--main-gray);
 }
 
 @keyframes blinker {
@@ -302,7 +304,7 @@ a {
 }
 
 .slick-dots li.slick-active button:before {
-  color: #98999a;
+  color: var(--main-color);
   opacity: 1;
 }
 
@@ -317,7 +319,7 @@ a {
   float: left;
   overflow: hidden;
   margin-bottom: 0;
-  background: #3085a3;
+  background: var(--main-color);
   text-align: center;
   cursor: pointer;
 }
@@ -390,7 +392,7 @@ a {
 /*---------------*/
 
 figure.effect-bubba {
-  background: #069;
+  background: var(--main-color);
 }
 
 figure.effect-bubba img {

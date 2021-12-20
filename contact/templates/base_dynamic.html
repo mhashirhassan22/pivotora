@@ -7,20 +7,16 @@
   <body>
     <main class="container-fluid">
       <div class="row" style="background-color:white">        
-          <nav id="tmSidebar" class="tm-bg-black-transparent tm-sidebar" style="background-image: url('{% static "img/bg.jpg"%}')";>
+          <nav id="tmSidebar" class="tm-bg-black-transparent tm-sidebar" style="background-color: var(--main-color);";>
             <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
               <i class="fas fa-bars"></i>
             </button>
             <div class="tm-sidebar-sticky">
               <div class="tm-brand-box">
-                <div class="tm-double-border-1">
-                  <div class="tm-double-border-2">
                     <a href="{% url 'contact:index' %}">
-                    <img src="{% static 'img/logot.png' %}" alt="Client Image" class="img-fluid tm-client-img" />
+                    <img src="{% static 'img/banner-logo-img.png' %}" alt="Client Image" class="img-fluid tm-client-img" />
                   </a>
                     <!-- <h1 class="tm-brand text-uppercase">Tech Hub</h1> -->
-                  </div>
-                </div>
               </div>
 
               <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav">
@@ -85,25 +81,24 @@
             <section id="about" class="row tm-section">
 
               <div class="col-xl-12 tm-flex-item-center" style="text-align: center;">
-                <h1 style="color: #830432;font-family: Georgia, 'Times New Roman', Times, serif;">Pivotora</h1><hr>
-
+                <img src="{% static 'img/Asset_1.png' %}" height="200">
         
                  </div> 
               <div class="col-xl-6">
                 <div class="tm-section-half">    
-                    <div><i class="fas fa-6x fa-building mb-5 tm-section-icon" style="color: #830432;"></i></div>                        
-                    <h2 class="tm-section-title tm-color-primary mb-5" >About Us</h2>
+                    <div><i class="fas fa-6x fa-building mb-5 tm-section-icon" style="color: var(--main-color);"></i></div>                        
+                    <h2 class="tm-section-title tm-color-primary mb-5" style="color:var(--main-gray)" ><strong>About Us</strong></h2>
                     <p class="mb-5">
-{{content.about_us}}
+                      {{content.about_us}}
                     </p>
                 </div>
               </div>
               <div class="col-xl-6">
-                <div class="tm-section-half">
-                    <div><i class="far fa-6x fas fa-glasses mb-5 tm-section-icon" style="color: #830432;"></i></div>
-                    <h2 class="tm-section-title tm-color-primary mb-5">Our Mission</h2>
+                <div class="tm-section-half" style="padding: 105px;">
+                    <div><i class="far fa-6x fas fa-glasses mb-5 tm-section-icon" style="color: var(--main-color);"></i></div>
+                    <h2 class="tm-section-title tm-color-primary mb-5" style="color:var(--main-gray)"><strong>Our Mission</strong></h2>
                     <p class="mb-5">
-{{content.mission}}
+                      {{content.mission}}
                     </p>
                 </div>
               </div>
@@ -146,7 +141,7 @@
               <div class="col-12 tm-section-pad">
                   <div class="tm-flex-item-left">
                       <div class="tm-w-80">
-                          <h2 class="tm-color-primary tm-section-title mb-4">Our Specialty</h2>
+                          <h2 class="tm-color-primary tm-section-title mb-4">Our Speciality</h2>
                           <!-- <p class="mb-5">
                             Aenean est augue, iaculis ut arcu a, cursus tempus eros.
                             Maecenas ut efficitur lectus, vel commodo nibh. Vivamus

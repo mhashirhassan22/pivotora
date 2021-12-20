@@ -1,4 +1,13 @@
 /* Magnific Popup CSS */
+:root{
+  --main-color:#00a99d;
+  --main-gray:#707070;
+}
+.btn-danger{
+  background-color: var(--main-color) !important;
+  border-color: var(--main-color) !important;
+  color: white !important;
+}
 .mfp-bg {
   top: 0;
   left: 0;
